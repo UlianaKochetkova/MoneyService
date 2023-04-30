@@ -9,11 +9,9 @@ pipeline {
   stages {
     stage('Build') {
        steps {
-       sh 'export MAVEN_HOME=/opt/maven
-           export PATH=$PATH:$MAVEN_HOME/bin
-           mvn --version
-           mvn clean package
-           mvn clean install'
+       withMaven(maven: 'maven') {
+                           sh 'mvn clean install'
+                       }
        }
     }
 
