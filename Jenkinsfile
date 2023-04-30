@@ -9,9 +9,7 @@ pipeline {
   stages {
     stage('Build') {
        steps {
-   withMaven(maven: 'MAVEN_ENV') {
-            sh "mvn ${MAVEN_ARGS}"
-        }
+       sh 'mvn clean install'
        }
     }
 
