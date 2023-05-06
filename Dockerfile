@@ -13,6 +13,8 @@ COPY ${JAR_FILE} MoneyService.jar
 # java -jar /app/spring-boot-docker.jar
 CMD ["java", "-jar", "-Xmx1024M", "/app/MoneyService.jar"]
 
+EXPOSE 8090
+
 #WORKDIR /app
 #
 #COPY .mvn/ .mvn
