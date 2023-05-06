@@ -14,6 +14,11 @@ public class MainController {
     @Autowired
     MainService mainService;
 
+    @GetMapping("/")
+    public String helloWorld(){
+        return "Hello World test";
+    }
+
     /**
      * Зачисление средств
      */
