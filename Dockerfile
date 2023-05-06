@@ -17,12 +17,8 @@ WORKDIR /app
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
+COPY src ./src
 RUN chmod +x mvnw
 RUN ./mvnw dependency:go-offline
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
-
-# Make port 8090 available to the world outside this container
 EXPOSE 8090
+CMD ["./mvnw", "spring-boot:run"]
