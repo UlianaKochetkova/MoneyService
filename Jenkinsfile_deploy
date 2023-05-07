@@ -30,10 +30,10 @@ pipeline {
             steps {
                 script {
                     if (springProfile == 'test') {
-                        sh 'docker-compose -f docker-compose-test.yml up'
+                        docker-compose -f docker-compose-test.yml up
                     }
                     else {
-                        sh 'docker-compose up'
+                        docker-compose up
                     }
                 }
 
