@@ -3,7 +3,6 @@ pipeline {
     environment {
         dockerContainerName = 'moneyservice'
         dockerImageName = 'moneyservice-api'
-        jobName = 'deploy_pipeline_test-api'
         springProfile="${env.profile}"
     }
     stages {
