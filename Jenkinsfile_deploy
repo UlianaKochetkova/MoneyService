@@ -27,6 +27,7 @@ pipeline {
             steps {
                 sh 'docker stop ${dockerContainerName}'
                 sh 'docker rm ${dockerContainerName}'
+                sh 'docker rmi ${dockerImageName}'
             }
         }
 
