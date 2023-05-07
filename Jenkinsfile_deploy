@@ -4,7 +4,7 @@ pipeline {
         dockerContainerName = 'moneyservice'
         dockerImageName = 'moneyservice-api'
         jobName = 'deploy_pipeline_test-api'
-        springProfile=${env.profile}
+        springProfile="${env.profile}"
     }
     stages {
         stage('Copy Artifacts from build_test_job') {
