@@ -28,15 +28,12 @@ pipeline {
 
         stage('Docker compose up') {
             steps {
-                script {
-                    if (springProfile == 'test') {
-                        docker-compose -f docker-compose-test.yml up
+                if (springProfile == 'test') {
+                        sh 'docker-compose -f docker-compose-test.yml up'
                     }
                     else {
-                        docker-compose up
+                        sh 'docker-compose up'
                     }
-                }
-
             }
         }
     }
