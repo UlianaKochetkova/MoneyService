@@ -5,28 +5,29 @@ pipeline {
         dockerImageName = 'moneyservice-api'
     }
     stages {
-    stage('Copy Artifacts') {
-             steps {
-                 script {
-                    step ([$class: 'CopyArtifact',
-                        projectName: 'build_test_job/com$MoneyService',
-                        filter: "**/*.jar",
-                        target: 'temp_money_service1']);
+        stage('Copy Artifacts from build_test_job') {
+            steps {
+                script {
+                    step([$class     : 'CopyArtifact',
+                          projectName: 'build_test_job/com$MoneyService',
+                          filter     : "**/*.jar",
+                          target     : 'temp_money_service1'])
                 }
             }
         }
 
-    stage('clean container') {
-          steps {
-           sh 'docker ps -f name=${dockerContainerName} -q | xargs --no-run-if-empty docker container stop'
-           sh 'docker container ls -a -fname=${dockerContainerName} -q | xargs -r docker container rm'
-           sh 'docker images -q --filter=reference=${dockerImageName} | xargs --no-run-if-empty docker rmi -f'
-          }
+//        stage('Clean Container') {
+//            steps {
+//                sh 'docker ps -f name=${dockerContainerName} -q | xargs --no-run-if-empty docker container stop'
+//                sh 'docker container ls -a -fname=${dockerContainerName} -q | xargs -r docker container rm'
+//                sh 'docker images -q --filter=reference=${dockerImageName} | xargs --no-run-if-empty docker rmi -f'
+//            }
+//        }
+
+        stage('Docker compose up') {
+            steps {
+                sh 'docker compose up -d'
+            }
         }
-    stage('docker-compose start') {
-          steps {
-           sh 'docker compose up -d'
-          }
-    }
     }
 }
