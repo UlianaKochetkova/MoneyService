@@ -20,14 +20,14 @@ pipeline {
 //            steps {
 //                sh 'docker ps -f name=${dockerContainerName} -q | xargs --no-run-if-empty docker container stop'
 //                sh 'docker container ls -a -fname=${dockerContainerName} -q | xargs -r docker container rm'
-//                sh 'docker images -q --filter=reference=${dockerImageName} | xargs --no-run-if-empty docker rmi -f'
+//                sh 'docker images -q --filter=reference=${dockerImageName} | xargs docker rmi -f'
 //            }
 //        }
         stage('Clean Container') {
             steps {
                 sh 'docker stop ${dockerContainerName}'
                 sh 'docker rm ${dockerContainerName}'
-                sh 'docker rmi ${dockerImageName}'
+                sh 'docker images -q --filter=reference=${dockerImageName} | xargs docker rmi -f'
             }
         }
 
