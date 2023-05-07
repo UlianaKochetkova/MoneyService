@@ -16,7 +16,7 @@ public class MainController {
 
     @GetMapping("/")
     public String helloWorld(){
-        return "Hello World test";
+        return "Hello World test another one";
     }
 
     /**
