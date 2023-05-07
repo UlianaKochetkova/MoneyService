@@ -4,10 +4,10 @@ FROM openjdk:17-alpine
 # cd /app
 #WORKDIR /app
 
-ARG JAR_FILE=./temp_money_service1/com/MoneyService/0.0.1-SNAPSHOT/MoneyService-0.0.1-SNAPSHOT.jar
+#ARG JAR_FILE=./temp_money_service1/com/MoneyService/0.0.1-SNAPSHOT/MoneyService-0.0.1-SNAPSHOT.jar
 
 # cp target/spring-boot-docker-0.0.1-SNAPSHOT.jar /app/spring-boot-docker.jar
-COPY ${JAR_FILE} /app
+COPY . /app/
 
 EXPOSE 8090
 
