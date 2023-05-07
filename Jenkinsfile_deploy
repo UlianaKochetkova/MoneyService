@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    environment {
+        MAVEN_ARGS=" -e clean install"
+        registry = ""
+        dockerContainerName = 'moneyservice'
+        dockerImageName = 'moneyservice-api'
+    }
+    stages {
+    stage('Copy Artifacts') {
+             steps {
+                 script {
+                    step ([$class: 'CopyArtifact',
+                        projectName: 'build_job',
+                        filter: "*.jar, *.pom",
+                        target: 'temp_money_service']);
+                }
+            }
+        }
+    }
+}
