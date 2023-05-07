@@ -3,6 +3,7 @@ pipeline {
     environment {
         dockerContainerName = 'moneyservice'
         dockerImageName = 'moneyservice-api'
+        jobName = 'deploy_pipeline_test-api'
     }
     stages {
         stage('Copy Artifacts from build_test_job') {
@@ -27,7 +28,7 @@ pipeline {
             steps {
                 sh 'docker ps -f name=${dockerContainerName} -q | xargs --no-run-if-empty docker stop ${dockerContainerName}'
                 sh 'docker container ls -a -fname=${dockerContainerName} -q | xargs -r --no-run-if-empty docker rm ${dockerContainerName}'
-                sh 'docker images -q --filter=reference=${dockerImageName} | xargs --no-run-if-empty docker rmi -f'
+                sh 'docker images -q --filter=reference=${jobName} | xargs --no-run-if-empty docker rmi -f'
             }
         }
 
