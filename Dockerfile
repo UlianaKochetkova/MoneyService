@@ -5,15 +5,17 @@ FROM openjdk:17-alpine
 WORKDIR /app
 
 # Refer to Maven build -> finalName
-ARG JAR_FILE=temp_money_service1/**/*.jar
+ARG JAR_FILE=./temp_money_service1/**/*.jar
 
 # cp target/spring-boot-docker-0.0.1-SNAPSHOT.jar /app/spring-boot-docker.jar
 COPY ${JAR_FILE} MoneyService.jar
 
+EXPOSE 8090
+
 # java -jar /app/spring-boot-docker.jar
 CMD ["java", "-jar", "/app/MoneyService.jar"]
 
-EXPOSE 8090
+
 
 #РАБОТАЮЩИЙ ВАРИАНТ!!!!
 #WORKDIR /app
