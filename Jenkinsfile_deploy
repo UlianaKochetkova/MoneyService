@@ -11,7 +11,7 @@ pipeline {
              steps {
                  script {
                     step ([$class: 'CopyArtifact',
-                        projectName: 'build_test_job',
+                        projectName: 'build_test_job/com$MoneyService',
                         filter: "**/*.jar",
                         target: 'temp_money_service']);
                 }
