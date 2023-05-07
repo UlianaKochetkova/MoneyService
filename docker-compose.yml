@@ -6,3 +6,4 @@ services:
     ports:
       - '8090:8090'
     container_name: moneyservice
+    image: moneyservice-api
