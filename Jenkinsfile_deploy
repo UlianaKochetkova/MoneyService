@@ -4,6 +4,7 @@ pipeline {
         dockerContainerName = 'moneyservice'
         dockerImageName = 'moneyservice-api'
         jobName = 'deploy_pipeline_test-api'
+        springProfile=${env.profile}
     }
     stages {
         stage('Copy Artifacts from build_test_job') {
@@ -27,7 +28,15 @@ pipeline {
 
         stage('Docker compose up') {
             steps {
-                sh 'docker compose up -d'
+                script {
+                    if (springProfile == 'test') {
+                        sh 'docker-compose -f docker-compose-test.yml up'
+                    }
+                    else {
+                        sh 'docker-compose up'
+                    }
+                }
+
             }
         }
     }
