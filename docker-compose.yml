@@ -8,7 +8,7 @@ services:
     container_name: moneyservice
     image: moneyservice-api
   grafana:
-    build: './config/grafana'
+#    build: './config/grafana'
     user: 'root'
     container_name: customgrafana
     ports:
