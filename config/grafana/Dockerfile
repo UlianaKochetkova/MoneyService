@@ -10,12 +10,14 @@ RUN apk add --no-cache shadow && \
     addgroup --gid 472 grafana && \
     gpasswd -d grafana root && \
     usermod -g grafana grafana && \
+    usermod -aG docker grafana && \
     apk del shadow
 
 RUN chown -R root:root /etc/grafana && \
-chmod -R a+rwx /etc/grafana && \
+chmod -R 777 /etc/grafana && \
 chown -R grafana:grafana /var/lib/grafana && \
 chown -R grafana:grafana /var/lib/grafana/plugins && \
-chown -R grafana:grafana /usr/share/grafana
+chown -R grafana:grafana /usr/share/grafana && \
+chmod -R 777 /etc/grafana
 
 USER grafana
