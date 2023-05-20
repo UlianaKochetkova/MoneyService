@@ -19,5 +19,3 @@ RUN usermod -aG docker grafana
 #chown -R grafana:grafana /var/lib/grafana/plugins && \
 #chown -R grafana:grafana /usr/share/grafana && \
 #chmod -R 777 /etc/grafana
-
-USER grafana
