@@ -23,17 +23,18 @@ services:
         aliases:
           - grafana
   prometheus:
-    image: prom/prometheus
+    #image: prom/prometheus
+    build: './prometheus'
     user: 'root'
     container_name: prometheus
     ports:
       - '9090:9090'
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+#    volumes:
+#      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     expose:
       - 9090
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
+#    command:
+#      - "--config.file=/etc/prometheus/prometheus.yml"
     networks:
       monitoring:
         aliases:
