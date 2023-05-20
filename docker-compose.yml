@@ -48,8 +48,6 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - ELASTIC_PASSWORD=changeme
       - xpack.security.enabled=true
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
       - '9200:9200'
     expose:
