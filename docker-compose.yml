@@ -9,6 +9,7 @@ services:
     image: moneyservice-api
   grafana:
     build: './config/grafana'
+    user: '104'
     ports:
       - 3000:3000
     volumes:
@@ -25,8 +26,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./prometheus:/prometheus
+      - ./config/prometheus:/etc/prometheus
     networks:
       monitoring:
         aliases:
