@@ -4,7 +4,9 @@ FROM grafana/grafana:8.3.0-ubuntu
 #ARG GF_GID="472"
 USER root
 ADD ./provisioning /etc/grafana/provisioning
-RUN usermod -aG docker grafana
+RUN chown -R root:root /etc/grafana && \
+chmod -R 777 /etc/grafana
+#RUN usermod -aG docker grafana
 #RUN adduser 472 docker
 #RUN apk add --no-cache shadow && \
 #    addgroup --gid 472 grafana && \
