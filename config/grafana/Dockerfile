@@ -13,8 +13,9 @@ RUN apk add --no-cache shadow && \
     apk del shadow
 
 RUN chown -R root:root /etc/grafana && \
-chmod -R a+r /etc/grafana && \
+chmod -R a+rwx /etc/grafana && \
 chown -R grafana:grafana /var/lib/grafana && \
+chown -R grafana:grafana /var/lib/grafana/plugins && \
 chown -R grafana:grafana /usr/share/grafana
 
 USER grafana
