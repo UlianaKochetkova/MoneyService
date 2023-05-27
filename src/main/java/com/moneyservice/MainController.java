@@ -26,7 +26,7 @@ public class MainController {
     /**
      * Зачисление средств
      */
-    @GetMapping("/add")
+    @PostMapping ("/add")
     @ResponseBody
     public BaseResponse addMoney(@RequestBody Map<String, Object> request){
         log.info("/add: {}", request);
@@ -36,7 +36,7 @@ public class MainController {
     /**
      * Списание средств
      */
-    @GetMapping("/get")
+    @PostMapping("/get")
     public BaseResponse getMoney(@RequestBody Map<String, Object> request){
         log.info("/get: {}", request);
         return mainService.getMoney(request);
@@ -45,7 +45,7 @@ public class MainController {
     /**
      * Отправка средств
      */
-    @GetMapping("/send")
+    @PostMapping("/send")
     public BaseResponse sendMoney(@RequestBody Map<String, Object> request){
         log.info("/send: {}", request);
         return mainService.sendMoney(request);
