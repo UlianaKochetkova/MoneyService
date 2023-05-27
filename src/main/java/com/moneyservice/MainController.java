@@ -54,7 +54,7 @@ public class MainController {
     /**
      * Информация о балансе
      */
-    @GetMapping("/balance")
+    @PostMapping("/balance")
     public Map<String, Object> getBalance(@RequestBody Map<String, Object> request){
         log.info("/balance: {}", request);
         return mainService.getBalance(request);
@@ -63,7 +63,7 @@ public class MainController {
     /**
      * Информация о действиях пользователя
      */
-    @GetMapping("/actions")
+    @PostMapping("/actions")
     public Map<String, Object> getActions(@RequestBody Map<String, Object> request){
         log.info("/actions: {}", request);
         return mainService.getActions(request);
