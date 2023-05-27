@@ -4,6 +4,7 @@ import com.moneyservice.model.BaseResponse;
 import com.moneyservice.services.MainService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -14,9 +15,12 @@ public class MainController {
     @Autowired
     MainService mainService;
 
+    @Value("${server.port}")
+    int currentPort;
+
     @GetMapping("/")
     public String helloWorld(){
-        return "Hello World test another one 2";
+        return "Hello World port: " + currentPort;
     }
 
     /**
